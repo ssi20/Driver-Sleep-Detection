@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/home','SessionController@index');
+
+Route::get('/session','SessionController@create');
+
+
+
