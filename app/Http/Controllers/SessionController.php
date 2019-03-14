@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\session;
 use App\driver;
-use App\session;
+use App\sesion;
 
 class SessionController extends Controller
 {
@@ -27,7 +27,8 @@ class SessionController extends Controller
      */
     public function create()
     {
-        return view ('pages.session');
+        $trip=sesion::all();
+        return view ('pages.session')->with('trip',$trip);
 
     }
 

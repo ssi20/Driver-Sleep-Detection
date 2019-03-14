@@ -52,9 +52,6 @@
   
      
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,8 +94,8 @@
     <div class="col-sm-3 sidenav" style="background-color: #555">
       <h4>John's Blog</h4>
       <ul  class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Home</a></li>
-        <li><a href="#/session"> Session</a></li>
+        <li class="active"><a href="#/session">Home</a></li>
+        <li><a href="/session"> Session</a></li>
         
         
       </ul><br>
@@ -113,7 +110,7 @@
     </div>
 ​
     <div class="col-sm-9">
-      <h4><small>RECENT POSTS</small></h4>
+      <h4><small>Your Profile</small></h4>
       <hr>
       <h2>Profile</h2>
       
