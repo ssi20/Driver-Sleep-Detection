@@ -116,18 +116,18 @@ while True:
 	else:
 		gamma=1
 
-	frame1 = adjust_gamma(frame,gamma=gamma)
+	frame = adjust_gamma(frame,gamma=gamma)
 	'''frame=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
 	frame = clahe.apply(frame)'''
 
 	#frame=cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB)
-	frame1=cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB)
+	#frame1=cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB)
 
 	if(vmean<50):
-		cv2.putText(frame1, "Dark Environment Detected", (20, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
+		cv2.putText(frame, "Dark Environment Detected", (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
 
-	cv2.putText(frame1, "g={}".format(gamma), (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
+	cv2.putText(frame, "g={}".format(gamma), (50, 80),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
 	#cv2.imshow("Images", frame  )#np.hstack([original, adjusted]))
 	#cv2.waitKey(0)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
