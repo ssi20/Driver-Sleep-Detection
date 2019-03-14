@@ -27,7 +27,8 @@ class SessionController extends Controller
      */
     public function create()
     {
-        $trip=sesion::all();
+        $trip=driver::all();
+        
         return view ('pages.session')->with('trip',$trip);
 
     }
@@ -40,7 +41,8 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        return view('pages.start');
     }
 
     /**
