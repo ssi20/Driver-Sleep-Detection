@@ -107,7 +107,7 @@ while True:
 	vmean=np.mean(v)
 	print(vmean)
 
-	if vmean <2:
+	if vmean <75:
 		gamma=2
 	elif vmean >90 and vmean <110:
 		gamma=0.8
