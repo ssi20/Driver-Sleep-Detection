@@ -92,4 +92,11 @@
         </span>
       </div>
     </div>
+
+    <?php 
     
+     // Get lat and long by address      
+      
+
+    
+    $r=rand(10, 30) ?>
