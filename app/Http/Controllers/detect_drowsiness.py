@@ -24,6 +24,15 @@ def face_detection(frame):
 		return 0
 	else :
 		return 1
+def adjust_gamma(image, gamma=1.0):
+	# build a lookup table mapping the pixel values [0, 255] to
+	# their adjusted gamma values
+    invGamma = 1.0 / gamma
+    table = np.array([((i / 255.0) ** invGamma) * 255
+        for i in np.arange(0, 256)]).astype("uint8")
+ 
+	# apply gamma correction using the lookup table
+    return cv2.LUT(image, table)
 
 
 
@@ -93,6 +102,34 @@ while True:
 	# channels)
 	frame = vs.read()
 	frame = imutils.resize(frame, width=450)
+	t2=cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+	h,s,v = cv2.split(t2)
+	vmean=np.mean(v)
+	print(vmean)
+
+	if vmean <2:
+		gamma=2
+	elif vmean >90 and vmean <110:
+		gamma=0.8
+	elif vmean >110:
+		gama=0.5
+	else:
+		gamma=1
+
+	frame1 = adjust_gamma(frame,gamma=gamma)
+	'''frame=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+	clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+	frame = clahe.apply(frame)'''
+
+	#frame=cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB)
+	frame1=cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB)
+
+	if(vmean<50):
+		cv2.putText(frame1, "Dark Environment Detected", (20, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
+
+	cv2.putText(frame1, "g={}".format(gamma), (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
+	#cv2.imshow("Images", frame  )#np.hstack([original, adjusted]))
+	#cv2.waitKey(0)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
 	# detect faces in the grayscale frame
