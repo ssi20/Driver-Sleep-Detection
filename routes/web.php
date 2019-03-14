@@ -23,6 +23,7 @@ Route::get('/home','SessionController@index');
 
 Route::get('/session','SessionController@create');
 
+Route::get('/start','SessionController@store');
 
 
 
