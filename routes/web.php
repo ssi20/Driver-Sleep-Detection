@@ -25,3 +25,4 @@ Route::get('/session','SessionController@create');
 Route::get('/start/{id}','SessionController@store');
 
 
+
