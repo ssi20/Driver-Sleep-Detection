@@ -64,101 +64,113 @@
 <body>
 @include('pages.nav')
 
-<script>
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position);
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
+        <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                console.log(position);
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
 
-        $.ajax({
-            url:'http://cyrus.com/start',
-            type:'get',
-            data:{latitude:lat,longitude:lng},
+                $.ajax({
+                    url:'http://cyrus.com/start',
+                    type:'get',
+                    data:{latitude:lat,longitude:lng},
 
-            
-            success:function(data)
-            {
-                alert('success');
-            }
+                    
+                    success:function(data)
+                    {
+                        alert('success');
+                    }
 
-        });
-    });
-}
+                });
+            });
+        }
 
-</script>
-​
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav" style="background-color: #555">
-      <h4></h4>
-      <ul  class="nav nav-pills nav-stacked">
-        <li><a href="#">Session Ongoing</a></li>
+        </script>
+        ​
+<div class="container-fluid" >
+    <div class="row content" >
+        <div class="col-sm-3 sidenav" style="background-color: #555">
+            <ul  class="nav nav-pills nav-stacked" >
+                <li><a href="#">Session Ongoing</a></li>
 
-      </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
+            </ul><br>
+            <div class="input-group"  >
+                <input type="text" class="form-control" placeholder="Search Blog..">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+            </div>
+        </div>
+        <div class="split up" >
+            <div class="centered">
+                <h1 id="demo"></h1>
+                    <p id="demo1"></p>
+                    
+                    <script>
+
+                        var countDownDate = new Date("Mar 19, 2019 00:00:00").getTime();
+
+                        // Update the count down every 1 second
+                        var x = setInterval(function() {
+
+                        // Get todays date and time
+                        var now = new Date().getTime();
+
+                        // Find the distance between now and the count down date
+                        var distance = countDownDate - now;
+
+
+                        // Time calculations for days, hours, minutes and seconds
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // Display the result in the element with id="demo"
+                        document.getElementById("demo").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+
+                        // If the count down is finished, write some text 
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("demo").innerHTML = "EXPIRED";
+                        }
+                        }, 1000);
+                    </script>
+                </p>    
+            </div>
+        </div>
+        <div class="split down" >
+            <div class="centered">
+                <ul class="list-group" >  
+                    <li class="list-group-item" >
+                        <div class="row" >
+                        <div class="col-md-2"><strong>s_id</strong></div>
+                        <div class="col-md-2"><strong>s_time</strong> </div>
+                        <div class="col-md-1"><strong>latitude</strong></div>
+                        <div class="col-md-1"><strong>longitude</strong></div>
+                        <div class="col-md-1"><strong>status</strong></div>
+                        </div>
+                    </li>
+                    @foreach ($data as $trip)
+                        <li class="list-group-item" >
+                            <div class="row" > 
+                            <div class="col-md-2"><?php echo $trip->s_id;?></div>
+                            <div class="col-md-2"><?php echo $trip->s_time;?></div>
+                            <div class="col-md-2"><?php echo $trip->latitude;?></div>                              
+                            <div class="col-md-2"><?php echo $trip->longitude;?></div>  
+                            <div class="col-md-2"><?php echo $trip->status;?></div>  
+                        </li>
+
+                    @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
-
-    <?php 
-    
-     // Get lat and long by address      
-      
-  
-    
-    $r=rand(10, 30) ?>
-    
-
-    <div class="split up">
-  <div class="centered">
-  <p id="demo"></p>
-  <p id="demo1"></p>
-  <?php echo  json_decode($end) ;?>
-<script>
-
-// Set the date we're counting down to
-var countDownDate =  new Date().getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get todays date and time
-  var now = new Date().getTime() ;
-
-  document.getElementById("demo1").innerHTML=countDowndate;
-  // Find the distance between now and the count down date
-  var distance = parseInt("<?php echo $end ?>");
-  
-
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
-
-  // If the count down is finished, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-</script>
-  </div>
 </div>
-<div class="split down">
-  <div class="centered">
-   
-  </div>
-</div>
+
 
    
     <script type='text/javascript'>
@@ -221,6 +233,7 @@ var x = setInterval(function() {
        });
      }
      </script>
+     
    
-   </body>
-   </html>
+</body>
+</html>

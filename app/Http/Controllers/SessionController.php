@@ -48,7 +48,7 @@ class SessionController extends Controller
         
         $e= driver::find($id);
         $data=sesion::all();
-
+        
         $q= ($e->end);
         $d1=strtotime($q);
         $d2=time();
