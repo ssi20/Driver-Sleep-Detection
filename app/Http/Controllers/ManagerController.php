@@ -14,6 +14,7 @@ class ManagerController extends Controller
         $pl=DB::select("SELECT d_id,dest_name,car_id, driver.end
         from driver
         natural join manager
+        where manager.m_id=1
         order by d_id");
         $p=$this->dstatus();
         // print_r($p);
@@ -42,8 +43,8 @@ class ManagerController extends Controller
 
 
     public function dstatus(){
-        $id=$_REQUEST['id'];
-        #$id=1;
+        //$id=$_REQUEST['id'];
+        $id=2;
         $data=DB::select("SELECT s_time,latitude,longitude,place,status from session where s_id='$id'
         order by s_time  DESC ");
         //print_r($data);

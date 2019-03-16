@@ -89,7 +89,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQcPOqTbByHzN1o5yCjDHOPhz
                     var pla=response['data'][i].place;
                     var status=response['data'][i].status;
                     var tr_str = "<tr>" +
-                        "<td align='center' class='text-dark h4'>" + place + "</td>" +
+                        "<td align='center' class='text-dark h4'>" + pla + "</td>" +
                         "<td align='center' class='text-dark h4'>" + time + "</td>" +
                         "<td align='center'  class='text-danger h4'>" + status + "</td>" +
                         
