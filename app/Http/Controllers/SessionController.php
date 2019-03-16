@@ -43,6 +43,13 @@ class SessionController extends Controller
     public function store(Request $request,$id)
     {
         //$x= \Request::ip();
+        $d2=date("Y-m-d h:i:s");
+       $xx=new driver;
+       
+                        $xx::where('id', $id)
+                                    ->update(['start' => $d2,
+                                             ]); 
+                        
         $x='103.216.145.228';
         $const='latitude';
         $add = \Location::get($x);
@@ -57,10 +64,13 @@ class SessionController extends Controller
         // // return($d1);
         ///$datee=date("M d, y h:i:s");
         
-         $d2=time();
+       
         //eturn $datee;
         // return $add->regionName;
         $val=date("Y-m-d h:i:s");
+
+
+
         return view('pages.start')->with('data',$data)->with('add',$add)->with('end',$datee)->with('id',$id);
     }
     
