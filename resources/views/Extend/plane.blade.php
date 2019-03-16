@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FCMS</title>
+    <title>Drive-Safe</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -20,7 +20,7 @@
     <!-- Custom Scrollbar-->
     <link rel="stylesheet" href="{{Url::to('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css')}}">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{Url::to('css/style.blue.css')}}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{Url::to('css/style.pink.css')}}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ URL::to('css/custom.css')}}">
     <!-- Favicon-->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\session;
 use App\driver;
@@ -39,11 +40,30 @@ class SessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
+        //$x= \Request::ip();
+        $x='103.216.145.228';
+        $const='latitude';
+        $add = \Location::get($x);
+        //dd($add);
+        $e= driver::find($id);
+        $data=DB::table('session')->orderBy('s_time','DESC')->get();
+        //return $data;
+        $q= ($e->end);
         
-        return view('pages.start');
+        $date = date_create($q);
+        $datee=date_format($date,"M d, Y h:i:s");
+        // // return($d1);
+        ///$datee=date("M d, y h:i:s");
+        
+         $d2=time();
+        //eturn $datee;
+        // return $add->regionName;
+        $val=date("Y-m-d h:i:s");
+        return view('pages.start')->with('data',$data)->with('add',$add)->with('end',$datee)->with('id',$id);
     }
+    
 
     /**
      * Display the specified resource.
