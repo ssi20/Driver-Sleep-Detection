@@ -16,11 +16,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home','SessionController@index');
+Route::get('/home','SessionController@index')->name("d_home");
 
-Route::get('/session','SessionController@create');
+Route::get('/session','SessionController@create')->name("d_index");
 
-Route::get('/start/{id}','SessionController@store');
+Route::get('/start/{id}','SessionController@store')->name("d_start");
 
 
 Route::group(['prefix'=>'manager', 'middleware' => 'admin'], function() {
