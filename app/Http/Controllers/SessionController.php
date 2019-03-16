@@ -39,11 +39,25 @@ class SessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
+        //$x= \Request::ip();
+        $x='103.216.145.228';
+        $add = \Location::get($x);
+        //dd($add);
         
-        return view('pages.start');
+        $e= driver::find($id);
+        $data=sesion::all();
+        
+        $q= ($e->end);
+        $d1=strtotime($q);
+        $d2=time();
+        print_r($d1."  ");
+        print_r($d2);
+        $val=date("Y-m-d h:i:s");
+        return view('pages.start')->with('data',$data)->with('add',$add)->with('end',$d2);
     }
+    
 
     /**
      * Display the specified resource.
