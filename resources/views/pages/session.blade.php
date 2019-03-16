@@ -72,6 +72,7 @@
   </style>
 </head>
 <body>
+<?php $products = session('cart'); ?>
 @include('pages.nav')
 
 ​
