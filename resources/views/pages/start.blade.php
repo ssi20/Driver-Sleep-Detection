@@ -1,72 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="refresh" content="30">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Drive</title>
-    
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-    <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
-    
-    
-    <style type="text/css">
-        h1{
-            display:inline;
-            text-align:center;
-        }
-        #header_link{
-            text-decoration:none;
-            float:right;
-            display:block;
-            margin-right:0px;
-            clear:left;
-            padding:1%;
-            
-        }
-		
-        
-       
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 1500px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f0f0f0;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;} 
-    }
-  </style>
-</head>
-<body>
-<script>
-var audio = new Audio();
-audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Hello%20World.';
-audio.play();
-</script>
-@include('pages.nav')
+@extends('pages.Nav1')
+@section('content')
+
        
          <div class="container-fluid">
                 <ul  class="nav nav-pills nav-stacked">
@@ -167,8 +102,7 @@ audio.play();
         }
         }, 1000);
         </script>
-</body>
-</html>
+@stop
 
 
 
