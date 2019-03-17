@@ -16,7 +16,7 @@ class ManagerController extends Controller
         natural join manager
         where manager.m_id=1
         order by d_id");
-        $p=$this->dstatus();
+        //$p=$this->dstatus();
         // print_r($p);
         // return;
         return view('manager.layouts.schedules')->with('pl',$pl);
@@ -43,7 +43,7 @@ class ManagerController extends Controller
 
 
     public function dstatus(){
-        //$id=$_REQUEST['id'];
+        $id=$_REQUEST['id'];
         $id=2;
         $data=DB::select("SELECT s_time,latitude,longitude,place,status from session where s_id='$id'
         order by s_time  DESC ");
