@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="refresh" content="5">
@@ -65,8 +65,9 @@
 var audio = new Audio();
 audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Hello%20World.';
 audio.play();
-</script>
-@include('pages.nav')
+</script> -->
+@extends('pages.Nav1')
+@section('content')
        
          <div class="container-fluid">
                 <ul  class="nav nav-pills nav-stacked">
