@@ -121,6 +121,10 @@ print("[INFO] starting video stream thread...")
 vs = VideoStream(src=args["webcam"]).start()
 time.sleep(1.0)
 count=0
+blink=0
+pblink=0
+slfrm=0
+flg=0
 # loop over frames from the video stream
 while True:
 	# grab the frame from the threaded video file stream, resize
@@ -141,9 +145,9 @@ while True:
 
 	if vmean <75:
 		gamma=2.5
-	elif vmean >90 and vmean <110:
+	elif vmean >100 and vmean <120:
 		gamma=0.8
-	elif vmean >110:
+	elif vmean >120:
 		gama=0.5
 	else:
 		gamma=1
@@ -157,9 +161,9 @@ while True:
 	#frame1=cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB)
 
 	if(vmean<50):
-		cv2.putText(frame, "Dark Environment Detected", (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
+		cv2.putText(frame, "Dark Environment Detected", (10, 60),cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
 
-	cv2.putText(frame, "g={}".format(gamma), (50, 80),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
+	cv2.putText(frame, "g={}".format(gamma), (50, 80),cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
 	#cv2.imshow("Images", frame  )#np.hstack([original, adjusted]))
 	#cv2.waitKey(0)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -167,7 +171,7 @@ while True:
 	# detect faces in the grayscale frame
 	rects = detector(gray, 0)
 	
-	
+	#slfrm+=1
 	
 	# loop over the face detections
 	for rect in rects:
@@ -190,10 +194,12 @@ while True:
 		#print(leftEyeHull)
 		cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
 		cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1)
-
+		print("SLframe",slfrm,"blink",blink,'pblink',pblink)
 		if ear < EYE_AR_THRESH:
 			COUNTER += 1
 			TOTAL +=1
+			blink+=1
+			slfrm=0
 			if COUNTER >= EYE_AR_CONSEC_FRAMES:
 				
 				# if the alarm is not on, turn it on
@@ -230,18 +236,40 @@ while True:
 
 			
 		elif ear >  EYE_AR_THRESH :
-
+			pblink=blink
 			COUNTER = 0
 			ALARM_ON = False
 			print(TOTAL)
-		if (TOTAL<40):
+		'''if (TOTAL<40):
 			if PICTURE==0:
 				PICTURE=1
 				PICTURE1=1
 				insert()
 				PICTURE1=0
 			cv2.putText(frame, "PICTURE", (10, 30),
+				cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)'''
+		
+		if (blink-pblink==0):
+			
+			slfrm+=1
+			
+		if(slfrm>40):
+			#time.sleep(1.0)
+			slfrm=0
+			flg+=1
+			if PICTURE==0:
+				PICTURE=1
+				PICTURE1=1
+				insert()
+				PICTURE1=0
+			
+		
+		if 0<flg<=10:
+			cv2.putText(frame, "PICTURE", (10, 30),
 				cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+			flg+=1
+		else:
+			flg=0
 
 		cv2.putText(frame, "EAR: {:.2f}".format(ear), (300, 30),
 			cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
