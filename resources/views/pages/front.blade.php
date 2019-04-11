@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -84,38 +84,29 @@
       .row.content {height: auto;} 
     }
   </style>
-</head>
-<body>
-@include('pages.nav')
+</head> -->
+@extends('pages.Nav1')
+@section('content')
+
+<!-- @include('pages.nav') -->
 
 ​
 <div class="container-fluid">
   <div class="row content">
-    <div class="col-sm-3 sidenav" style="background-color: #555">
-      <h4>John's Blog</h4>
-      <ul  class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#/session">Home</a></li>
-        <li><a href="/session"> Session</a></li>
-        
-        
-      </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
-    </div>
+   
+      
 ​
     <div class="col-sm-9">
       <h4><small>Your Profile</small></h4>
       <hr>
       <h2>Profile</h2>
+    </div>
+  </div>
+</div>
+</div>
       
+@stop
 
-</html>
 
 
 
