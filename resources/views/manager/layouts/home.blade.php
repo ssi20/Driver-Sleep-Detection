@@ -1,5 +1,5 @@
     
-@extends('pages.Nav1')
+@extends('manager.dashboard.Nav1')
 @section('content')
 ​
     <div class="well">
