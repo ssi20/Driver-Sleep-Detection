@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="{{Url::to('css/style.pink.css')}}" id="theme-stylesheet">
 </head>
 @include('manager.layouts.driverstatus')
+@include('manager.layouts.maps')
 ​   <div >
 <input type=hidden name=id id=n value="{{$did}}">
 <input type=hidden name=prev id=pr >
@@ -19,9 +20,9 @@
     </div>
     
 
-    <script async defer
+    {{-- <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQcPOqTbByHzN1o5yCjDHOPhzUcDsc8NU&libraries=places">
-</script>
+</script> --}}
     <script>
     $(function worker(){
         // don't cache ajax or content won't be fresh
@@ -45,7 +46,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQcPOqTbByHzN1o5yCjDHOPhz
                 type: 'get',
                 dataType: 'json',
                 success: function(response){
-                console.log(response);
+                //console.log(response);
 
                 var dr=response['dr'][0].d;
                 var pic=response['pic'][0].p;

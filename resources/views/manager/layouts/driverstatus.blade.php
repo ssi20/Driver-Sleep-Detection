@@ -4,7 +4,7 @@ color: black;
 }
 </style>
     <div class="card">
-      <div class="card-header text-center text-dark" ><h1><u>{{"Driver ".$did."- Periodic Updates"}}</u> </h1></div>
+      <div class="card-header text-center text-dark" ><h4 class=display-4>{{"Periodic Updates"}}</h4></div>
      
       <div class="card-body text-dark">
             <div class="table-responsive">

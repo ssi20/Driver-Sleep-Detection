@@ -23,7 +23,7 @@
 <body>
 
   <div class="sectiontitle">
-  <h2> <u >{{"Driver ".$did." - Summary"}}</u></h2>
+  <h4 class=display-4> {{"Summary"}}</h4>
     <span></span>
 </div>
 <div id="projectFacts" class="sectionClass">

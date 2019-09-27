@@ -29,6 +29,10 @@ Route::group(['prefix'=>'manager', 'middleware' => 'admin'], function() {
             return view('manager.layouts.home');
          })->name("m_home");
 
+         Route::get('/maps', function () {
+            return view('manager.layouts.maps');
+         });
+
     Route::get('/schedule','ManagerController@plList' )->name("m_schedule");
 
     

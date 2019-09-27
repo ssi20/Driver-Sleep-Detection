@@ -24,7 +24,7 @@
               <li  class="@if(Route::is('m_home'))  active @endif"><a href="#" class="scroll"> <i class="icon-home"></i>Home                             </a></li>
               {{-- <li id=pk class="@if(Route::is('profile'))  active @endif"><a href="#" class="scroll"> <i class="icon-form"></i>Profile                            </a></li> --}}
           
-              <li  class="@if(Route::is('m_schedule')) active @endif"><a href="/manager/schedule"> <i class="fa fa-bar-chart"></i>Set Schedule                            </a></li>                 
+              <li  class="@if(Route::is('m_schedule')) active @endif"><a href="/manager/schedule"> <i class="fa fa-bar-chart"></i>Schedules                            </a></li>                 
             
             
            
